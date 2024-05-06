@@ -12,19 +12,34 @@
 const UseEffectHook = () => {
     const [count, setCount] = useState(0)
 
-    useEffect(() => {
-     setTimeout(() => {
-        alert("Data fetched")
-     }, 3000);
-    }, [count])
+//     useEffect(() => {
+//      setTimeout(() => {
+//         alert("Data fetched")
+//      }, 3000);
+//     }, [count])
     
 
- const handleInc = () => {
 
-    setCount(count+1)
 
   
- }
+//  }
+const fetchData = () => {
+    console.log("Data Fetch Started")
+
+}
+
+useEffect(() => {
+  const timer = setInterval(fetch,5000)
+  return () => {
+    clearInterval(timer)
+    console.log("ComponentWillUnmount")
+    
+  }
+}, [])
+
+const handleInc = () => {
+
+        setCount(count+1)  }
 
 
   return (
